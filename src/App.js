@@ -189,6 +189,6 @@ const Button = ({ onClick, className = "", children }) => (
   </button>
 );
 
-const Loading = () => <div>Loading...</div>;
+// const Loading = () => <div>Loading...</div>;
 
 export default App;
