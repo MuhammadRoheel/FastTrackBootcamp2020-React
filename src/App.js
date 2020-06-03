@@ -13,15 +13,15 @@ const PARAM_PAGE = "page=";
 const PARAM_HPP = "hitsPerPage=";
 
 const largeColumn = {
-  width: "40%"
+  width: "40%",
 };
 
 const midColumn = {
-  width: "30%"
+  width: "30%",
 };
 
 const smallColumn = {
-  width: "10%"
+  width: "10%",
 };
 
 class App extends Component {
@@ -32,7 +32,7 @@ class App extends Component {
       result: null,
       searchTerm: DEFAULT_QUERY,
       error: null,
-      isLoading: false
+      isLoading: false,
     };
 
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
@@ -51,7 +51,7 @@ class App extends Component {
 
     this.setState({
       result: { hits: updatedHits, page },
-      isLoading: false
+      isLoading: false,
     });
   }
 
@@ -61,9 +61,9 @@ class App extends Component {
     fetch(
       `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`
     )
-      .then(response => response.json())
-      .then(result => this.setSearchTopStories(result))
-      .catch(error => this.setState({ error }));
+      .then((response) => response.json())
+      .then((result) => this.setSearchTopStories(result))
+      .catch((error) => this.setState({ error }));
   }
 
   componentDidMount() {
@@ -86,10 +86,10 @@ class App extends Component {
   }
 
   onDismiss(id) {
-    const isNotId = item => item.objectID !== id;
+    const isNotId = (item) => item.objectID !== id;
     const updatedHits = this.state.result.hits.filter(isNotId);
     this.setState({
-      result: { ...this.state.result, hits: updatedHits }
+      result: { ...this.state.result, hits: updatedHits },
     });
   }
 
@@ -123,7 +123,7 @@ class App extends Component {
             <Button
               onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}
             >
-              More
+              More Results
             </Button>
           )}
         </div>
@@ -152,7 +152,7 @@ class Search extends Component {
           type="text"
           value={value}
           onChange={onChange}
-          ref={el => (this.input = el)}
+          ref={(el) => (this.input = el)}
         />
         <button type="submit">{children}</button>
       </form>
@@ -162,7 +162,7 @@ class Search extends Component {
 
 const Table = ({ list, onDismiss }) => (
   <div className="table">
-    {list.map(item => (
+    {list.map((item) => (
       <div key={item.objectID} className="table-row">
         <span style={largeColumn}>
           <a href={item.url}>{item.title}</a>
