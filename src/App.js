@@ -105,6 +105,7 @@ class App extends Component {
       <div className="page">
         <div className="interactions">
           <h1>Welcome to Hacker news</h1>
+          <h3>Here you can search articles on technology</h3>
           <Search
             value={searchTerm}
             onChange={this.onSearchChange}
